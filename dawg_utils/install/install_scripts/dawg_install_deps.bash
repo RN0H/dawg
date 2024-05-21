@@ -19,6 +19,5 @@ apt-get install -y python3-catkin-tools
 pip install empy
 pip install catkin-tools ## because apparently python3-catkin-tools != catkin-tools?
 
-
 # Auto source this workspace on terminal startup
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
