@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  dawg_noetic:
+    image: dawg:${DAWG_OS_TYPE}
+    privileged: true
+    build: 
+      context: ${DAWG_WS_PATH}/catkin_ws
+      dockerfile: ${DAWG_INSTALL_PATH}/Dockerfile
+      args: 
+        REAL: ${DAWG_REAL_ROBOT}
+        DAWG_WS_PATH: ${DAWG_WS_PATH}
+    volumes:
+      - ${DAWG_WS_PATH}/catkin_ws:/root/catkin_ws # Runtime attach
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1

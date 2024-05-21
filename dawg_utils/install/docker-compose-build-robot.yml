@@ -1,0 +1,27 @@
+version: "1.0"
+services:
+  dawg_noetic:
+    image: dawg:${DAWG_OS_TYPE}
+    network_mode: "host"
+    build: 
+      context: ${DAWG_WS_PATH}/catkin_ws
+      dockerfile: ${DAWG_INSTALL_PATH}/Dockerfile
+      args: 
+        DAWG: ${DAWG_REAL_ROBOT}
+        DAWG_WS_PATH: ${DAWG_WS_PATH}
+        BASE_IMAGE: ${DAWG_BASE_IMAGE}
+        OS: ${DAWG_OS_TYPE}
+    privileged: true
+    devices:
+      - "/dev:/dev"
+    volumes:
+      - /usr/bin/tegrastats:/usr/bin/tegrastats 
+      - /etc/udev:/etc/udev
+      - /sys/class/gpio:/sys/class/gpio
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+      - /dev/input:/dev/input
+      - ${DAWG_WS_PATH}/catkin_ws:/root/catkin_ws # Runtime attach
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
