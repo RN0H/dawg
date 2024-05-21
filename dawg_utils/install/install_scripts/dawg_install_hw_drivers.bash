@@ -4,7 +4,7 @@
 
 # Set ROS_IP
 OS = "$1"
-HOUND = "$2"
+DAWG = "$2"
 if [[ "$OS" == "aarch64" ]]; then
     echo "export ROS_IP=\$(ifconfig wlan0 | grep 'inet ' | awk '{print \$2}')" >> ~/.bashrc
 else
@@ -16,6 +16,9 @@ fi
 
 if [[ "$DAWG" == 1 ]]; then
 	echo 'export PYTHONPATH="${PYTHONPATH}:/root/catkin_ws/src/BeamNGRL"' >> ~/.bashrc
+    echo 'export UNITREE_LEGGED_SDK_PATH=~/catkin_ws/src/unitree_legged_control/unitree_legged_sdk'  >> ~/.bashrc
+    echo 'export UNITREE_PLATFORM="arm64"' >> ~/.bashrc
+    echo 'export UNITREE_SDK_VERSION=3_3_3' >> ~/.bashrc
 fi
 echo "ldconfig" >> ~/.bashrc
 
