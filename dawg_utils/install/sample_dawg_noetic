@@ -5,8 +5,6 @@ export DAWG_COMPOSE_FILE=docker-compose-build-robot.yml
 export DAWG_OS_TYPE=aarch64
 export DAWG_BASE_IMAGE=ubuntu:20.04
 
-#Start internet
-sudo service network-manager start
 
 xhost +local:docker
 docker-compose -f $DAWG_INSTALL_PATH/$DAWG_COMPOSE_FILE run -p 9090:9090 --rm dawg_noetic bash
