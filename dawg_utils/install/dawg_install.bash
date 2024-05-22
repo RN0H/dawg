@@ -100,7 +100,6 @@ if [[ $DAWG_REAL_ROBOT == 1 ]]; then
 
     # Setup docker base image and mushr self start service
     sudo usermod -aG docker $USER
-    sudo cp ~/catkin_ws/src/dawg/daemon.json /etc/docker/daemon.json
     ## add mushr_start.service to services (where?)
     sudo cp ~/catkin_ws/src/dawg/dawg_utils/install/dawg_start.service /etc/systemd/system
     sudo systemctl enable dawg_start.service

@@ -19,7 +19,7 @@ RUN apt-get update -y \
 RUN mkdir install_scripts
 
 # ROS Noetic
-ADD src/dawg/dawg_utils/install/install_scripts/dawg_install_ros.bash install_scripts/dawg_install_ros.bash
+ADD src/dawg/dawg_utils/install/install_scrzipts/dawg_install_ros.bash install_scripts/dawg_install_ros.bash
 RUN chmod +x install_scripts/dawg_install_ros.bash && install_scripts/dawg_install_ros.bash 
 
 # Hardware drivers
