@@ -1,0 +1,12 @@
+export DAWG_INSTALL_PATH=/home/unitree/catkin_ws/src/dawg/dawg_utils/install
+export DAWG_REAL_ROBOT=1
+export DAWG_WS_PATH=/home/unitree
+export DAWG_COMPOSE_FILE=docker-compose-build-robot.yml
+export DAWG_OS_TYPE=aarch64
+export DAWG_BASE_IMAGE=ubuntu:20.04
+
+xhost +local:docker
+docker-compose -f $DAWG_INSTALL_PATH/$DAWG_COMPOSE_FILE run -p 9090:9090 --rm dawg_noetic bash
+xhost -local:docker
+
+# docker-compose -f $DAWG_INSTALL_PATH/$DAWG_COMPOSE_FILE run -p 9090:9090 -d --rm dawg_noetic /root/catkin_ws/src/hound_core/entry_command.sh
